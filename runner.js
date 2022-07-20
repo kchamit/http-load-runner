@@ -1,6 +1,8 @@
 const args = require('minimist')(process.argv);
 const axios = require('axios');
 
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+
 if (!args.url || !args.waitTime || !args.threadCount) {
     console.log("node runner url=serviceUrl waitTime=? threadCount=?");
     console.log("\twaitTime = time in seconds a thread waits between calls");
