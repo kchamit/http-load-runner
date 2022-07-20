@@ -40,7 +40,7 @@ async function start() {
     while (true) {
         console.log(`Starting request number ${requestNumber++}`);
         axios
-            .get(args.url)
+            .get(args.url, {timeout: 9000000})
             .then(res => {
                 console.log(`Returned statusCode: ${res.status} in ${res.responseTime / 1000} sec`);
             })
