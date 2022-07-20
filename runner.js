@@ -3,16 +3,18 @@ const axios = require('axios');
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
-if (!args.url || !args.waitTime || !args.threadCount) {
+if (!args.url || !args.waitTime || !args.threadCount || !args.requestPerThread) {
     console.log("node runner url=serviceUrl waitTime=? threadCount=?");
     console.log("\twaitTime = time in seconds a thread waits between calls");
     console.log("\tthreadCount = maximum number of total threads");
+    console.log("\trequestPerThread = maximum number of request per threads");
     process.exit(-1);
 }
 
 console.log(`url: ${args.url}`);
 console.log(`waitTime: ${args.waitTime} seconds`);
-console.log(`threadCount: ${args.threadCount} treads`);
+console.log(`threadCount: ${args.threadCount} threads`);
+console.log(`requestPerThread: ${args.requestPerThread} request per thread`);
 
 // install interceptor for response time measure
 axios.interceptors.request.use(x => {
@@ -37,10 +39,11 @@ for (var i = 1; i <= _iThreadCount; i++) {
 }
 
 async function start() {
-    while (true) {
+    var _iRequestCount = parseInt(args.requestPerThread);
+    for (var n = 0; n < _iRequestCount; n++) {
         console.log(`Starting request number ${requestNumber++}`);
         axios
-            .get(args.url, {timeout: 9000000})
+            .get(args.url, { timeout: 900000 })
             .then(res => {
                 console.log(`Returned statusCode: ${res.status} in ${res.responseTime / 1000} sec`);
             })
