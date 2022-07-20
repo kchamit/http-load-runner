@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "axios": "^0.27.2",
+    "minimist": "^1.2.6"
+  },
+  "name": "http-load-runner",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://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@github.com/kchamit/http-load-runner.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kchamit/http-load-runner/issues"
+  },
+  "homepage": "https://github.com/kchamit/http-load-runner#readme"
+}
