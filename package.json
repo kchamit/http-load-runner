@@ -1,7 +1,9 @@
 {
   "dependencies": {
     "axios": "^0.27.2",
-    "minimist": "^1.2.6"
+    "lodash": "^4.17.21",
+    "minimist": "^1.2.6",
+    "percentile": "^1.6.0"
   },
   "name": "http-load-runner",
   "description": "",
